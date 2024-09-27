@@ -1,4 +1,6 @@
-﻿namespace OOP
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace OOP
 {
     internal class Program
     {
@@ -17,12 +19,61 @@
                 $"Färg: {car1.color}\n" +
                 $"Hastighet: {car1.ChangeSpeed()}");*/
 
-            Person person1 = new Person("Joakim", "Olofsson");
-            Console.WriteLine(person1.FullName);
+            /*Person person1 = new Person("Joakim", "Olofsson");
+            Console.WriteLine(person1.FullName);*/
+
+            Car myCar = new Car("Car", "Ground", "Drivers License", "Volvo", "V70", "Red");
+            Boat myBoat = new Boat("Sailboat", "Water", "Boat License", true, false, 3);
+            Console.WriteLine($"{myCar.Type} | {myBoat.Type}" );
         }
     }
 
-    class Person
+
+    class Vehicle
+    {
+        public string Type { get; set; }
+        public string WayOfTravel { get; set; }
+        public string LicenseType { get; set; }
+
+        public Vehicle(string type, string wayOfTravel, string licenseType)
+        {
+            Type = type;
+            WayOfTravel = wayOfTravel;
+            LicenseType = licenseType;
+        }
+    }
+
+    class Car : Vehicle
+    {
+        public string Manufacturer { get; set; }
+        public string Model { get; set; }
+        public string Color { get; set; }
+
+        public Car(string type, string wayOfTravel, string licenseType, string manufacturer, string model, string color)
+            : base(type, wayOfTravel, licenseType)
+        {
+            Manufacturer = manufacturer;
+            Model = model;
+            Color = color;
+        }
+    }
+
+    class Boat : Vehicle
+    {
+        public bool Sail { get; set; }
+        public bool Engine { get; set; }
+        public int Cabins { get; set; }
+
+        public Boat(string type, string wayOfTravel, string licenseType, bool sail, bool engine, int cabins)
+            : base(type, wayOfTravel, licenseType)
+        {
+            Sail = sail;
+            Engine = engine;
+            Cabins = cabins;
+        }
+    }
+
+    /*class Person
     {
         private string _firstName;
         private string _lastName;
@@ -54,7 +105,7 @@
 
             return value;
         }
-    }
+    }*/
 
     /*class Car
     {
