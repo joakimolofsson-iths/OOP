@@ -25,9 +25,10 @@ namespace OOP
             Car myCar = new Car("Car", "Ground", "Drivers License", "Volvo", "V70", "Red");
             Boat myBoat = new Boat("Sailboat", "Water", "Boat License", true, false, 3);
             Console.WriteLine($"{myCar.Type} | {myBoat.Type}" );
+            myCar.ChangeSpeed();
+            myBoat.ChangeSpeed();
         }
     }
-
 
     class Vehicle
     {
@@ -40,6 +41,11 @@ namespace OOP
             Type = type;
             WayOfTravel = wayOfTravel;
             LicenseType = licenseType;
+        }
+
+        public virtual void ChangeSpeed()
+        {
+            Console.WriteLine("Vehicle is changing speed!");
         }
     }
 
@@ -56,6 +62,11 @@ namespace OOP
             Model = model;
             Color = color;
         }
+
+        public override void ChangeSpeed()
+        {
+            Console.WriteLine("Car is changing speed!");
+        }
     }
 
     class Boat : Vehicle
@@ -70,6 +81,10 @@ namespace OOP
             Sail = sail;
             Engine = engine;
             Cabins = cabins;
+        }
+        public override void ChangeSpeed()
+        {
+            Console.WriteLine("Boat is changing speed!");
         }
     }
 
